@@ -1,16 +1,27 @@
-import React, { MouseEvent, useState } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 
-// components
-import Banana from './components/Banana'
-import Strawberry from './components/Strawberry'
-import Apple from './components/Apple'
-import Button from './components/Button'
+// 3 fruit components
+const Banana = ({ text, children }) => (
+  <div>
+    {text}, {children}
+  </div>
+)
+const Strawberry = ({ text }) => <div>{text}</div>
+const Apple = ({ text }) => <div>{text}</div>
 
+// button to increase count
+const Button = ({ text, callback }) => (
+  <button name='increaseButton' onClick={callback}>
+    {text}
+  </button>
+)
+
+// our App
 function App() {
   const [count, setCount] = useState(0)
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event) => {
     console.log(event.currentTarget)
     setCount((prev) => prev + 1)
   }
